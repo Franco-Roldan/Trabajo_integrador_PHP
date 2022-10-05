@@ -1,0 +1,105 @@
+body{
+    background-color: #ddd;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0; 
+}
+.board{
+    background-color: white;
+    text-align: center;
+    height: 100vh;
+
+}
+header > h1{
+    margin: 0;
+    padding: 10px 15px;   
+}
+.menu{
+    padding: 40px 0px;
+}
+.btn{
+    background-color: #444;
+    border: none;
+    text-decoration: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: large;
+    margin: 0px 25px;
+    width: 250px;
+    border-radius: 30px;
+}
+.btn:hover{
+    background-color: #666;
+    cursor: pointer;
+}
+.btn-devolucion{
+    background-color: #444;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    color:white;
+    font-size: larger;
+    margin-right: 10px;
+    width:150px;
+}
+.btn-devolucion:hover{
+    background-color: rgb(212, 138, 0);
+    cursor: pointer;
+}
+.content{
+    height: 410px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.form{
+    position:fixed;
+    margin-top: 80px;
+    background-color: #ddd;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: larger;
+    padding: 15px 30px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px #666;
+
+}
+.form > h3{
+    font-size: 25px;
+}
+.form > input{
+    margin: 10px 0px;
+    padding: 5px 10px;
+}
+.form > input[type="date"]{
+    width: 170px;
+    margin-left: 22px;
+}
+table{
+    table-layout: auto;
+    width: 800px;
+    border-collapse: collapse;
+    font-size: larger;
+}
+th{
+    background-color: #444;
+    color: white;
+    border:solid 1px black;
+    margin: 0;
+}
+tr{
+    border: solid 1px black;
+}
+.contable{
+    color: green;
+}
+.negativo{
+    color: red;
+}
+
+footer > p {
+    padding: 10px 0px;
+    margin: 0;
+    font-size: 18px;
+    background-color: #444;
+}
