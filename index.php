@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>CRUD PHP</title>
+    <title>Trabajo Integrador</title>
 </head>
 <body>
     <div class="board">
@@ -23,7 +23,7 @@
                     include("funtions.php");
                     // crear variable de para almacenar los registros
                     $array_movimientos = array();
-
+                    // si existe la variable $array_movimientos, pasarle el valor obtenidos por $_REQUEST
                    if(isset($_REQUEST['array_movimientos'])){
                         $array_movimientos = $_REQUEST['array_movimientos'];
                     }
@@ -32,24 +32,25 @@
                     if(isset($_REQUEST['click'])){
                         $click_value = $_REQUEST['click'];
                         switch($click_value){ 
-                            // segun el valor capturado mostrar una determinada sección del programa
+                            // según el valor capturado mostrar una determinada sección del programa
                             case 'Ingresos':
-                                Formulario($click_value);
+                                Formulario($click_value); // se muestra el formulario dependiendo el valor de $click_value
                                 break;
                             case 'Ingresar':
+                                // Se guarda el resultado de la validación de los datos ingresados
                                 $flag = Validacion($_REQUEST['date'],$_REQUEST['concepto'],$_REQUEST['cantidad']);
-                                if($flag){
+                                if($flag){ // si la validacion no es correcta
                                     echo $flag;
                                     Formulario("Ingresos");
-                                }else{
-                                    $registro = array(
+                                }else{ // si la validación es correcta
+                                    $registro = array( // se guardan los datos solicitados en un array 
                                         'fecha' => $_REQUEST["date"],
                                         'concepto' => $_REQUEST["concepto"],
                                         'cantidad' => $_REQUEST["cantidad"]
                                     );
-                                    $array_movimientos[] = $registro;
+                                    $array_movimientos[] = $registro; // se almacena el array de registro en el array de movimientos
                                     echo "<h3 class='contable'>¡Ingreso Registrado con Exitoso!</h3>";
-                                    Mostrar_Movimientos($array_movimientos, $click_value);
+                                    Mostrar_Movimientos($array_movimientos, $click_value); // se muestra la tabla de movimientos
                                 }
                                 break;
                             case 'Pagos':
@@ -73,11 +74,11 @@
                                 break;
                             case 'Devoluciones':
                                 echo "<h3>Devolución de recibos</h3>";
-                                Mostrar_devoluciones($array_movimientos);
+                                Mostrar_devoluciones($array_movimientos); // se muestra la tabla con los valores para devoluciones
                                 break;
                             case 'Devolver':
                                 echo "<h3>Devolución de recibos</h3>";
-                                $array_movimientos = Devolucion($array_movimientos);
+                                $array_movimientos = Devolucion($array_movimientos); // se actualiza el array de movimientos sin el registro devuelto 
                                 
                                 break;
                             case 'Cancelar':
@@ -89,8 +90,9 @@
                                 break;
                         }
                     }else{
-                        echo "<h2> ¡Bienvenido! </h2>";
+                        echo "<h2> ¡Bienvenido! </h2>"; 
                     }
+                    // se envian los datos actuales del array de movimientos a si mismo
                     foreach ($array_movimientos as $clave => $valor) {
                         echo '<input type="hidden" name="array_movimientos[' . $clave . '][fecha]"     value="' . $valor['fecha'] . '">'; //Fechas
                         echo '<input type="hidden" name="array_movimientos[' . $clave . '][concepto]"  value="' . $valor['concepto'] . '">'; //Conceptos  
